@@ -1,6 +1,10 @@
 import multer from 'multer';
 import AWS from 'aws-sdk';
+import dotenv from 'dotenv'
+dotenv.config()
 
+const accessKey = process.env.ACCESS_KEY;
+const secretAccessKey = process.env.SECRET_ACCESS_KEY;
 
 // Set up multer to handle file uploads
 export const upload = multer({
@@ -18,8 +22,8 @@ export const upload = multer({
     },
   });
 
-// Set up an Amazon S3 client
+//Amazon S3 client
 export const s3 = new AWS.S3({
-    accessKeyId: process.env.ACCESS_KEY!,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY!,
+    accessKeyId: accessKey!,
+    secretAccessKey: secretAccessKey!,
   });
