@@ -1,3 +1,4 @@
+Note: image Name and Image Key are used interchangeably
 
 # Base URL 
 
@@ -16,7 +17,7 @@ When no file is uploaded it returns
 	 res.status(400).json({ error: 'Please select a file' });
 ```
 ## * Success Response
-When the image name is successfuly saved at in the mongoDB database and the image itself is successfully in the s3 bucket, it returns the success message below
+When the image name is successfuly saved in the mongoDB database and the image itself is successfully uploaded to the s3 bucket, it returns the success message below
 ```javascript
 res.json({
             success: true, 
@@ -39,10 +40,19 @@ res.status(500).json({
 Endpoints
 ### `POST /get_image` (https://tobams-task-acqa.onrender.com/get_image) 
 ### Description
-This endpoint allows you to get and display an image from the server. The image name or key with the name filename is passed to the body of the request. It is then desctructred 
-to be used to get the image. 
+This endpoint allows you to get and display an image from the server. The image name or key with the name filename is passed to the body of the request like this.
 
-It checked if the  filename is defined, if it not, it throws the error message below
+```javascript
+	{
+		filename: "image-key"
+	}
+
+```
+
+"1705610112073-plural.jpg", "1705612506987-orm-sequelize.jpg" are some of the image key already existing in the database that you can test the /get_image route with.
+You can also upload your own image to get it key
+
+The code checks if the  filename is defined, if it not, it throws the error message below
 
 ```javascript
 res.status(400).json({
