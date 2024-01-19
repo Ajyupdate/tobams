@@ -16,7 +16,7 @@ When no file is uploaded it returns
 	 res.status(400).json({ error: 'Please select a file' });
 ```
 ## * Success Response
-
+When the image name is successfuly saved at in the mongoDB database and the image itself is successfully in the s3 bucket, it returns the success message below
 ```javascript
 res.json({
             success: true, 
